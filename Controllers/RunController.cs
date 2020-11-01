@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using runlog2021api.Models;
 using runlog2021api.Models.Repository;
 
@@ -45,7 +46,8 @@ namespace runlog2021api.Controllers
             if (run == null)
             {
                 return BadRequest("Run is null.");
-            }
+            }           
+
             _dataRepository.Add(run);
             return CreatedAtRoute(
                   "Get",

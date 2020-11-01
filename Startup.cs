@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using runlog2021api.Extensions;
+using runlog2021api.Helpers;
 using runlog2021api.Models;
 using runlog2021api.Models.DataManager;
 using runlog2021api.Models.Repository;
@@ -35,7 +36,9 @@ namespace runlog2021api
             services.ConfigureIISIntegration();
             services.AddDbContext<RunContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:RunDB"]));
             services.AddScoped<IDataRepository<Run>, RunManager>();
-            services.AddControllers();
+            services.AddControllers()
+                    .AddJsonOptions(options =>
+            options.JsonSerializerOptions.Converters.Add(new TimeSpanToStringConverter()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

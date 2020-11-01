@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using runlog2021api.Models;
 
 namespace runlog2021api.Migrations
 {
     [DbContext(typeof(RunContext))]
-    partial class RunContextModelSnapshot : ModelSnapshot
+    [Migration("20201019173357_runlog2021api.Models.ContextRemoveRuns")]
+    partial class runlog2021apiModelsContextRemoveRuns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,9 +23,9 @@ namespace runlog2021api.Migrations
 
             modelBuilder.Entity("runlog2021api.Models.Run", b =>
                 {
-                    b.Property<int>("RunId")
+                    b.Property<long>("RunId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Date")
@@ -50,18 +52,6 @@ namespace runlog2021api.Migrations
                     b.HasKey("RunId");
 
                     b.ToTable("Runs");
-
-                    b.HasData(
-                        new
-                        {
-                            RunId = 1,
-                            Date = new DateTime(2020, 10, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Duration = new TimeSpan(0, 0, 44, 46, 0),
-                            Length = 6.6200000000000001,
-                            Pace = new TimeSpan(4057401813),
-                            Surface = "beach",
-                            Type = "Not a valid Run Type."
-                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.EntityFrameworkCore.Migrations.Operations.Builders;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 
 namespace runlog2021api.Models
@@ -15,21 +16,17 @@ namespace runlog2021api.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Run>().HasData(
-                new Run
-                {
-                    RunId = 1,
-                    Date = new DateTime(2020, 10, 17),
-                    Duration = new TimeSpan(0, 44, 46),
-                    Length = 6.62
-                },
-                new Run
-                {
-                    RunId = 2,
-                    Date = new DateTime(2020, 10, 16),
-                    Duration = new TimeSpan(0, 37, 21),
-                    Length = 5.34
-                }
-            );
+                 new Run
+                 {
+                     RunId = 1,
+                     Date = new DateTime(2020, 10, 17),
+                     Duration = new TimeSpan(0, 44, 46),
+                     Length = 6.62,
+                     ImageUrl = null,
+                     Type = "not outside",
+                     Surface = "beach"
+                 }
+             );
         }
 
 
