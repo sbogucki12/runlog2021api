@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.JSInterop;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
@@ -16,12 +17,15 @@ namespace runlog2021api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class RunController : ControllerBase
-    {
-        private readonly IDataRepository<Run> _dataRepository;
+    {      
+
+        private readonly IDataRepository<Run> _dataRepository;        
+
         public RunController(IDataRepository<Run> dataRepository)
         {
-            _dataRepository = dataRepository;
+            _dataRepository = dataRepository;            
         }
+
         // GET: api/Run
         [HttpGet]
         public IActionResult Get()
