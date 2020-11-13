@@ -12,5 +12,6 @@ namespace runlog2021api.Models.Repository
         void Add(TEntity entity);
         void Update(TEntity dbEntity, TEntity entity);
         void Delete(TEntity entity);
+        void AddMany(List<TEntity> list);
     }
 }

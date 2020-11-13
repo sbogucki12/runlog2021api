@@ -15,18 +15,18 @@ namespace runlog2021api.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Run>().HasData(
-                 new Run
-                 {
-                     RunId = 1,
-                     Date = new DateTime(2020, 10, 17),
-                     Duration = new TimeSpan(0, 44, 46),
-                     Length = 6.62,
-                     ImageUrl = null,
-                     Type = "not outside",
-                     Surface = "beach"
-                 }
-             );
+            //modelBuilder.Entity<Run>().HasData(
+            //     new Run
+            //     {
+            //         RunId = 1,
+            //         Date = new DateTime(2020, 10, 17),
+            //         Duration = new TimeSpan(0, 44, 46),
+            //         Length = 6.62,
+            //         ImageUrl = null,
+            //         Type = "not outside",
+            //         Surface = "beach"
+            //     }
+            // );
         }
 
 

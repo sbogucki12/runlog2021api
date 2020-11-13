@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.JSInterop;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Schema;
 using runlog2021api.Models;
 using runlog2021api.Models.Repository;
 
@@ -83,6 +86,32 @@ namespace runlog2021api.Controllers
             }
             _dataRepository.Delete(run);
             return NoContent();
+        }
+
+        //This method is to help convert data from the old run log to data model of new run log  
+        [HttpPost]
+        [Route("/api/convert")]
+        public List<Run> ConvertJsonToRun([FromBody] List<OldRun> oldRuns)
+        {
+            var runs = new List<Run>(); 
+            
+
+            for (var i = 0; i < oldRuns.Count; i++)
+            {
+                var run = new Run();
+
+                run.Date = DateTime.Parse(oldRuns[i].Date);
+                run.Duration = TimeSpan.FromSeconds(oldRuns[i].Duration * 60);
+                run.Length = oldRuns[i].Distance;
+                run.Surface = oldRuns[i].Comment.ToString();
+                run.RunKey = oldRuns[i].Key;                
+                runs.Add(run);
+            }
+
+            _dataRepository.AddMany(runs);
+            
+            return _dataRepository.GetAll().ToList();
+
         }
     }
 }

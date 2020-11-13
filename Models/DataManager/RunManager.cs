@@ -27,6 +27,16 @@ namespace runlog2021api.Models.DataManager
             _runContext.Runs.Add(entity);
             _runContext.SaveChanges();
         }
+
+        public void AddMany(List<Run> runs)
+        {
+            for(var i = 0; i < runs.Count; i++)
+            {
+                _runContext.Runs.Add(runs[i]);
+            }
+
+            _runContext.SaveChanges();
+        }
         public void Update(Run run, Run entity)
         {
             run.Date = entity.Date;
@@ -40,5 +50,6 @@ namespace runlog2021api.Models.DataManager
             _runContext.Runs.Remove(run);
             _runContext.SaveChanges();
         }
+
     }
 }

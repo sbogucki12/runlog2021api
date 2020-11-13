@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,6 +18,8 @@ namespace runlog2021api.Models
         public long RunId { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan Duration { get; set; }
+        [AllowNull]
+        public int RunKey { get; set; }
         public string ImageUrl { get; set; }
         public double Length { get; set; }        
         public string Type
@@ -49,13 +52,13 @@ namespace runlog2021api.Models
 
             set
             {
-                if (value == null || value == "beach" || value == "street" || value == "trail" || value == "treadmill")
+                if (value == null || value == "beach" || value == "street" || value == "trail" || value == "treadmill" || value == "outdoor" || value == "indoor")
                 {
-                    _surface = value; 
+                    _surface = value;
                 } 
                 else
                 {
-                    throw new Exception("Not a valid Surface type.");
+                    throw new Exception(value + "is not a valid Surface type.");
                 }
             }
         }

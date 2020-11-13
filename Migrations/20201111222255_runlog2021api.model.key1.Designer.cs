@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using runlog2021api.Models;
 
 namespace runlog2021api.Migrations
 {
     [DbContext(typeof(RunContext))]
-    partial class RunContextModelSnapshot : ModelSnapshot
+    [Migration("20201111222255_runlog2021api.model.key1")]
+    partial class runlog2021apimodelkey1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,14 +37,14 @@ namespace runlog2021api.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Key")
+                        .HasColumnType("int");
+
                     b.Property<double>("Length")
                         .HasColumnType("float");
 
                     b.Property<TimeSpan>("Pace")
                         .HasColumnType("time");
-
-                    b.Property<int>("RunKey")
-                        .HasColumnType("int");
 
                     b.Property<string>("Surface")
                         .HasColumnType("nvarchar(max)");
