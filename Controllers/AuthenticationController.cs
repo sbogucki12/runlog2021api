@@ -38,5 +38,6 @@ namespace runlog2021api.Controllers
 
             return BadRequest("Error in request.");
 
-        }        
+        }
+    }
 }

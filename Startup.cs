@@ -36,6 +36,7 @@ namespace runlog2021api
             services.ConfigureIISIntegration();
             services.AddDbContext<RunContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:RunDB"]));
             services.AddScoped<IDataRepository<Run>, RunManager>();
+            services.AddScoped<IDataRepository<Image>, ImageManager>();
             services.AddControllers()
                     .AddJsonOptions(options =>
             options.JsonSerializerOptions.Converters.Add(new TimeSpanToStringConverter()));

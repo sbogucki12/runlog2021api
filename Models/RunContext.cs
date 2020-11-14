@@ -29,8 +29,7 @@ namespace runlog2021api.Models
             // );
         }
 
-
-
         public DbSet<Run> Runs { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }
