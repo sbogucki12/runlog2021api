@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using runlog2021api.Models;
 
 namespace runlog2021api.Controllers
 {
@@ -19,13 +15,15 @@ namespace runlog2021api.Controllers
             Configuration = configuration;
         }
 
-        // GET: api/Authentication
-        [HttpGet]
-        public IActionResult Get([FromHeader] String pw)
+        // POST: api/Authentication
+        [HttpPost]
+        public IActionResult Post([FromBody] Authentication auth)
         {
+            var pw = auth.Password;
+
             var secret = Configuration["Authentication:password"];
             var success = Configuration["Authentication:success"];
-            var failure = Configuration["Authentication:failure"];
+            //var failure = Configuration["Authentication:failure"];
             if (pw == secret)
             {
                 return Ok(success);
@@ -33,11 +31,10 @@ namespace runlog2021api.Controllers
 
             else if (pw != secret)
             {
-                return BadRequest(failure);
+                return NoContent();
             }
 
             return BadRequest("Error in request.");
-
         }
     }
 }

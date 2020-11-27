@@ -1,17 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using runlog2021api.Extensions;
 using runlog2021api.Helpers;
 using runlog2021api.Models;
@@ -33,6 +26,18 @@ namespace runlog2021api
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureCors();
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy(name: "CorsPolicy",
+            //       builder =>
+            //       {
+            //           builder.AllowAnyOrigin()
+            //           .AllowAnyHeader()
+            //           .AllowAnyMethod();                       
+            //       });
+            //});
+
+
             services.ConfigureIISIntegration();
             services.AddDbContext<RunContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:RunDB"]));
             services.AddScoped<IDataRepository<Run>, RunManager>();
@@ -48,12 +53,11 @@ namespace runlog2021api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors("CorsPolicy");
             }
 
             app.UseHttpsRedirection();
-
             app.UseStaticFiles();
-            app.UseCors("CorsPolicy");
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.All

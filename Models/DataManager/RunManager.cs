@@ -1,8 +1,6 @@
 ﻿using runlog2021api.Models.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace runlog2021api.Models.DataManager
 {
@@ -30,7 +28,7 @@ namespace runlog2021api.Models.DataManager
 
         public void AddMany(List<Run> runs)
         {
-            for(var i = 0; i < runs.Count; i++)
+            for (var i = 0; i < runs.Count; i++)
             {
                 _runContext.Runs.Add(runs[i]);
             }
@@ -50,6 +48,5 @@ namespace runlog2021api.Models.DataManager
             _runContext.Runs.Remove(run);
             _runContext.SaveChanges();
         }
-
     }
 }

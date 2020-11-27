@@ -1,39 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace runlog2021api.Models
 {
     public class Run
     {
         string _type;
-        string _surface; 
+        string _surface;
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [AllowNull]
+        //[Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long RunId { get; set; }
+        [AllowNull]
         public DateTime Date { get; set; }
+        [AllowNull]
         public TimeSpan Duration { get; set; }
         [AllowNull]
         public int RunKey { get; set; }
+        [AllowNull]
         public string ImageUrl { get; set; }
-        public double Length { get; set; }        
+        [AllowNull]
+        public double Length { get; set; }
+        [AllowNull]
         public string Type
         {
-           get
-           {
+            get
+            {
                 return _type;
-           }
+            }
 
             set
             {
-                if(value == "outdoors" || value == "indoors")
+                if (value == "outdoor" || value == "indoor")
                 {
-                    _type = value; 
+                    _type = value;
                 }
 
                 else
@@ -42,12 +43,12 @@ namespace runlog2021api.Models
                 }
             }
         }
-          
+        [AllowNull]
         public string Surface
-        {            
+        {
             get
             {
-                return _surface; 
+                return _surface;
             }
 
             set
@@ -55,13 +56,14 @@ namespace runlog2021api.Models
                 if (value == null || value == "beach" || value == "street" || value == "trail" || value == "treadmill" || value == "outdoor" || value == "indoor")
                 {
                     _surface = value;
-                } 
+                }
                 else
                 {
                     throw new Exception(value + "is not a valid Surface type.");
                 }
             }
         }
+        [AllowNull]
         public TimeSpan Pace
         {
             get
@@ -73,6 +75,6 @@ namespace runlog2021api.Models
             {
                 _ = Duration / Length;
             }
-        }      
+        }
     }
 }

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using runlog2021api.Models;
-using runlog2021api.Models.DataManager;
 using runlog2021api.Models.Repository;
+using System.Collections.Generic;
 
 namespace runlog2021api.Controllers
 {
@@ -39,7 +34,7 @@ namespace runlog2021api.Controllers
             var img = new Image();
             byte[] imageData = new byte[json.ImageData.Count];
 
-            for(var i = 0; i < json.ImageData.Count; i++)
+            for (var i = 0; i < json.ImageData.Count; i++)
             {
                 imageData[i] = json.ImageData[i];
             }
@@ -49,10 +44,10 @@ namespace runlog2021api.Controllers
             _dataRepository.Add(img);
 
             return Ok();
-/*            return CreatedAtRoute(
-                  "Get",
-                  new { Id = img.Id },
-                  img);*/
+            /*            return CreatedAtRoute(
+                              "Get",
+                              new { Id = img.Id },
+                              img);*/
         }
     }
 }

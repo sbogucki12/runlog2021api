@@ -1,12 +1,10 @@
 ﻿using runlog2021api.Models.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace runlog2021api.Models.DataManager
 {
-    public class ImageManager: IDataRepository<Image>
+    public class ImageManager : IDataRepository<Image>
     {
         readonly RunContext _imageContext;
         public ImageManager(RunContext context)

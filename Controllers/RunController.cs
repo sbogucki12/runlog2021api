@@ -1,29 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.JSInterop;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Schema;
+﻿using Microsoft.AspNetCore.Mvc;
 using runlog2021api.Models;
 using runlog2021api.Models.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace runlog2021api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class RunController : ControllerBase
-    {      
+    {
 
-        private readonly IDataRepository<Run> _dataRepository;        
+        private readonly IDataRepository<Run> _dataRepository;
 
         public RunController(IDataRepository<Run> dataRepository)
         {
-            _dataRepository = dataRepository;            
+            _dataRepository = dataRepository;
         }
 
         // GET: api/Run
@@ -53,7 +46,7 @@ namespace runlog2021api.Controllers
             if (run == null)
             {
                 return BadRequest("Run is null.");
-            }           
+            }
 
             _dataRepository.Add(run);
             return CreatedAtRoute(
@@ -97,8 +90,8 @@ namespace runlog2021api.Controllers
         [Route("/api/convert")]
         public List<Run> ConvertJsonToRun([FromBody] List<OldRun> oldRuns)
         {
-            var runs = new List<Run>(); 
-            
+            var runs = new List<Run>();
+
 
             for (var i = 0; i < oldRuns.Count; i++)
             {
@@ -108,14 +101,13 @@ namespace runlog2021api.Controllers
                 run.Duration = TimeSpan.FromSeconds(oldRuns[i].Duration * 60);
                 run.Length = oldRuns[i].Distance;
                 run.Surface = oldRuns[i].Comment.ToString();
-                run.RunKey = oldRuns[i].Key;                
+                run.RunKey = oldRuns[i].Key;
                 runs.Add(run);
             }
 
             _dataRepository.AddMany(runs);
-            
-            return _dataRepository.GetAll().ToList();
 
+            return _dataRepository.GetAll().ToList();
         }
     }
 }

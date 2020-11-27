@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace runlog2021api.Models
+﻿namespace runlog2021api.Models
 {
     public class OldRun
     {
-        string _comment; 
+        string _comment;
         public object _id { get; set; }
-        public string Comment { 
+        public string Comment
+        {
             get
             {
-                return _comment; 
+                return _comment;
             }
-            set 
+            set
             {
                 _comment = value.ToString();
             }
