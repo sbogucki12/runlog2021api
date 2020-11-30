@@ -41,6 +41,11 @@ namespace runlog2021api.Models.DataManager
             run.Duration = entity.Duration;
             run.Length = entity.Length;
             run.Pace = entity.Pace;
+            run.SleepHours = entity.SleepHours;
+            run.SleepToBedTime = entity.SleepToBedTime;
+            run.SleepWakeTime = entity.SleepWakeTime;
+            run.RunListenedTo = entity.RunListenedTo;
+            run.Temperature = entity.Temperature;
             _runContext.SaveChanges();
         }
         public void Delete(Run run)

@@ -76,5 +76,13 @@ namespace runlog2021api.Models
                 _ = Duration / Length;
             }
         }
+
+        [AllowNull]
+        public double SleepHours { get; set; }
+
+        [AllowNull] public double SleepToBedTime { get; set; }
+        [AllowNull] public double SleepWakeTime { get; set; }
+        [AllowNull] public string RunListenedTo { get; set; }
+        [AllowNull] public double Temperature { get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using runlog2021api.Models;
 
 namespace runlog2021api.Migrations
 {
     [DbContext(typeof(RunContext))]
-    partial class RunContextModelSnapshot : ModelSnapshot
+    [Migration("20201130031633_runlog2021api.models.runAddedFields")]
+    partial class runlog2021apimodelsrunAddedFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,20 +66,20 @@ namespace runlog2021api.Migrations
                     b.Property<string>("RunListenedTo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("SleepHours")
-                        .HasColumnType("float");
+                    b.Property<decimal>("SleepHours")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<double>("SleepToBedTime")
-                        .HasColumnType("float");
+                    b.Property<decimal>("SleepToBedTime")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<double>("SleepWakeTime")
-                        .HasColumnType("float");
+                    b.Property<decimal>("SleepWakeTime")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Surface")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Temperature")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Temperature")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");

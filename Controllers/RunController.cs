@@ -43,6 +43,10 @@ namespace runlog2021api.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Run run)
         {
+            if (!ModelState.IsValid) 
+            {
+                return BadRequest("Run Format Is Invalid");
+            }
             if (run == null)
             {
                 return BadRequest("Run is null.");
@@ -91,7 +95,6 @@ namespace runlog2021api.Controllers
         public List<Run> ConvertJsonToRun([FromBody] List<OldRun> oldRuns)
         {
             var runs = new List<Run>();
-
 
             for (var i = 0; i < oldRuns.Count; i++)
             {
