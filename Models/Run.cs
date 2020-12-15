@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
 namespace runlog2021api.Models
@@ -8,22 +10,22 @@ namespace runlog2021api.Models
         string _type;
         string _surface;
 
+        
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long? RunId { get; set; }
         [AllowNull]
-        //[Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long RunId { get; set; }
+        public DateTime? Date { get; set; }
         [AllowNull]
-        public DateTime Date { get; set; }
+        public TimeSpan? Duration { get; set; }
         [AllowNull]
-        public TimeSpan Duration { get; set; }
+        public int? RunKey { get; set; }
         [AllowNull]
-        public int RunKey { get; set; }
+        public string? ImageUrl { get; set; }
         [AllowNull]
-        public string ImageUrl { get; set; }
+        public double? Length { get; set; }
         [AllowNull]
-        public double Length { get; set; }
-        [AllowNull]
-        public string Type
+        public string? Type
         {
             get
             {
@@ -44,7 +46,7 @@ namespace runlog2021api.Models
             }
         }
         [AllowNull]
-        public string Surface
+        public string? Surface
         {
             get
             {
@@ -64,7 +66,7 @@ namespace runlog2021api.Models
             }
         }
         [AllowNull]
-        public TimeSpan Pace
+        public TimeSpan? Pace
         {
             get
             {
@@ -78,11 +80,12 @@ namespace runlog2021api.Models
         }
 
         [AllowNull]
-        public double SleepHours { get; set; }
+        public double? SleepHours { get; set; }
 
-        [AllowNull] public double SleepToBedTime { get; set; }
-        [AllowNull] public double SleepWakeTime { get; set; }
-        [AllowNull] public string RunListenedTo { get; set; }
-        [AllowNull] public double Temperature { get; set; }
+        [AllowNull] public DateTime? SleepToBedTime { get; set; }
+        [AllowNull] public DateTime? SleepWakeTime { get; set; }
+        [AllowNull] public string? RunListenedTo { get; set; }
+        [AllowNull] public double? Temperature { get; set; }
+        [AllowNull] public double? ShoeAge { get; set; }
     }
 }

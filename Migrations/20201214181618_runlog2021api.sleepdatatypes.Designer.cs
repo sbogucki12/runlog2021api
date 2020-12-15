@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using runlog2021api.Models;
 
 namespace runlog2021api.Migrations
 {
     [DbContext(typeof(RunContext))]
-    partial class RunContextModelSnapshot : ModelSnapshot
+    [Migration("20201214181618_runlog2021api.sleepdatatypes")]
+    partial class runlog2021apisleepdatatypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,48 +40,48 @@ namespace runlog2021api.Migrations
 
             modelBuilder.Entity("runlog2021api.Models.Run", b =>
                 {
-                    b.Property<long?>("RunId")
+                    b.Property<long>("RunId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("Date")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan?>("Duration")
+                    b.Property<TimeSpan>("Duration")
                         .HasColumnType("time");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("Length")
+                    b.Property<double>("Length")
                         .HasColumnType("float");
 
-                    b.Property<TimeSpan?>("Pace")
+                    b.Property<TimeSpan>("Pace")
                         .HasColumnType("time");
 
-                    b.Property<int?>("RunKey")
+                    b.Property<int>("RunKey")
                         .HasColumnType("int");
 
                     b.Property<string>("RunListenedTo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("ShoeAge")
+                    b.Property<double>("ShoeAge")
                         .HasColumnType("float");
 
-                    b.Property<double?>("SleepHours")
+                    b.Property<double>("SleepHours")
                         .HasColumnType("float");
 
-                    b.Property<DateTime?>("SleepToBedTime")
+                    b.Property<DateTime>("SleepToBedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("SleepWakeTime")
+                    b.Property<DateTime>("SleepWakeTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Surface")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("Temperature")
+                    b.Property<double>("Temperature")
                         .HasColumnType("float");
 
                     b.Property<string>("Type")

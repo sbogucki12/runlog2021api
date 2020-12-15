@@ -10,18 +10,21 @@ namespace runlog2021api.Models
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
-        //modelBuilder.Entity<Run>().HasData(
-        //     new Run
-        //     {
-        //         RunId = 1,
-        //         Date = new DateTime(2020, 10, 17),
-        //         Duration = new TimeSpan(0, 44, 46),
-        //         Length = 6.62,
-        //         ImageUrl = null,
-        //         Type = "not outside",
-        //         Surface = "beach"
-        //     }
-        // );
+        //    modelBuilder.Entity<Run>().Property(r => r.RunId);
+        //    modelBuilder.Entity<Run>().Property(r => r.Date);
+        //    modelBuilder.Entity<Run>().Property(r => r.Duration);
+        //    modelBuilder.Entity<Run>().Property(r => r.RunKey);
+        //    modelBuilder.Entity<Run>().Property(r => r.ImageUrl);
+        //    modelBuilder.Entity<Run>().Property(r => r.Length);
+        //    modelBuilder.Entity<Run>().Property(r => r.Type);
+        //    modelBuilder.Entity<Run>().Property(r => r.Surface);
+        //    modelBuilder.Entity<Run>().Property(r => r.Pace);
+        //    modelBuilder.Entity<Run>().Property(r => r.SleepHours);
+        //    modelBuilder.Entity<Run>().Property(r => r.SleepToBedTime);
+        //    modelBuilder.Entity<Run>().Property(r => r.SleepWakeTime);
+        //    modelBuilder.Entity<Run>().Property(r => r.RunListenedTo);
+        //    modelBuilder.Entity<Run>().Property(r => r.Temperature);
+        //    modelBuilder.Entity<Run>().Property(r => r.ShoeAge);
         //}
 
         public DbSet<Run> Runs { get; set; }
