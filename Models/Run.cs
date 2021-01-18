@@ -9,8 +9,7 @@ namespace runlog2021api.Models
     {
         string _type;
         string _surface;
-
-        
+                
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long? RunId { get; set; }
@@ -87,5 +86,6 @@ namespace runlog2021api.Models
         [AllowNull] public string? RunListenedTo { get; set; }
         [AllowNull] public double? Temperature { get; set; }
         [AllowNull] public double? ShoeAge { get; set; }
+        [AllowNull] public DateTime? StartTime { get; set; }
     }
 }

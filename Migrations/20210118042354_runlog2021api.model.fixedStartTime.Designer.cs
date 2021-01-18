@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using runlog2021api.Models;
 
 namespace runlog2021api.Migrations
 {
     [DbContext(typeof(RunContext))]
-    partial class RunContextModelSnapshot : ModelSnapshot
+    [Migration("20210118042354_runlog2021api.model.fixedStartTime")]
+    partial class runlog2021apimodelfixedStartTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
