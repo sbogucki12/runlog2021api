@@ -1,5 +1,9 @@
 # runlog2021api
-.NET Core API to support new runlog to replace https://bogoodski2019.azurewebsites.net/runlog
+
+
+.NET Core API to support new runlog here: https://www.dailyrun.net/ 
+
+Which replaces https://bogoodski2019.azurewebsites.net/runlog
 
 ## Complete 
 
